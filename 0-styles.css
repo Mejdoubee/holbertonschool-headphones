@@ -1,3 +1,4 @@
+/* Universal box-sizing for consistent element sizing */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -14,9 +15,12 @@ body, html {
     height: 100vh;
     background-image: url('images/headphones_hero_1.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     color: #FFF;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Top bar of the header */
@@ -24,15 +28,37 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 7%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 1rem 15%;
+    width: 100%;
+}
+
+/* Hamburger Menu Customization */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle .bar:nth-child(1), .menu-toggle .bar:nth-child(3) {
+    width: 25px;
+}
+
+.menu-toggle .bar:nth-child(2) {
+    width: 20px;
 }
 
 /* Logo styling */
 .logo {
-    width: 10.0625rem;
-    height: 2rem;
+    max-width: 10.0625rem;
+    width: 30%;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -42,7 +68,6 @@ body, html {
     justify-content: center;
     align-items: flex-start;
     gap: 2.5625rem;
-    flex-shrink: 0;
 }
 
 /* Navigation link styling */
@@ -56,16 +81,15 @@ body, html {
 /* Main content area in the header */
 .header-wrapper {
     max-width: 39.8125rem;
-    margin: 0 auto;
-    position: absolute;
-    top: 67%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
+    position: relative;
 }
 
 /* Container for title and subtitle */
@@ -81,6 +105,7 @@ body, html {
     font-size: 2rem;
     font-weight: 700;
     line-height: normal;
+    font-family: "Source Sans Pro";
 }
 
 /* Subtitle styling */
@@ -94,13 +119,14 @@ body, html {
 
 /* Call-to-action button styling */
 .cta-button {
-    width: 162px;
+    max-width: 162px;
+    width: 80%;
     height: 44px;
-    flex-shrink: 0;
     border-radius: 22px;
     background: #FF6565;
-    color: #FFF;
+    color: #FFFFFF;
     font-family: "Source Sans Pro";
+    text-transform: uppercase;
     font-size: 0.875rem;
     font-weight: 700;
     line-height: normal;
@@ -108,6 +134,9 @@ body, html {
     margin: 0 auto;
     display: block;
     margin-bottom: 2rem;
+    font-style: normal;
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.50);
+    border: none;
 }
 
 /* Additional paragraph styling */
@@ -118,4 +147,55 @@ body, html {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.625rem;
+}
+
+/* Mobile Version Adjustments (480px and below) */
+@media screen and (max-width: 480px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        background-color: #FFF;
+        width: 100%;
+        top: 50px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .nav-menu a {
+        display: block;
+        color: #000;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .logo {
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .header-wrapper {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* Tablet and Desktop Adjustments (481px and above) */
+@media screen and (min-width: 481px) {
+    .header-wrapper {
+        max-width: 39.8125rem;
+        transform: translate(-1%, 29%);
+        margin: auto;
+    }
 }
