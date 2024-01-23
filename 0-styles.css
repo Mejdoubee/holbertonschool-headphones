@@ -158,6 +158,15 @@ body, html {
     line-height: 1.625rem;
 }
 
+/* Hide the checkbox visually but remain functional */
+.menu-toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
 /* Mobile Version Adjustments (480px and below) */
 @media screen and (max-width: 480px) {
     .menu-toggle {
@@ -165,23 +174,60 @@ body, html {
         position: absolute;
         top: 10px;
         left: 10px;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        height: 3px;
+        background-color: #FFFFFF;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle .bar:nth-child(1), .menu-toggle .bar:nth-child(3) {
+        width: 25px;
+    }
+
+    .menu-toggle .bar:nth-child(2) {
+        width: 20px;
+    }
+
+    /* Transform bars into 'X' when checkbox is checked */
+    .menu-toggle-checkbox:checked + .menu-toggle .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle-checkbox:checked + .menu-toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle-checkbox:checked + .menu-toggle .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
     }
 
     .nav-menu {
         display: none;
         position: absolute;
-        background-color: #FFF;
         width: 100%;
         top: 50px;
         left: 0;
         z-index: 1;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
     }
 
     .nav-menu a {
         display: block;
-        color: #000;
         text-align: center;
         padding: 10px 0;
+    }
+
+    /* Display the nav menu in a row when checkbox is checked */
+    .menu-toggle-checkbox:checked ~ .nav-menu {
+        display: flex;
     }
 
     .logo {
@@ -199,6 +245,8 @@ body, html {
         padding: 1rem;
     }
 }
+
+
 
 /* Tablet and Desktop Adjustments (481px and above) */
 @media screen and (min-width: 481px) {
