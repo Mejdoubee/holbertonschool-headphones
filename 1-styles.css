@@ -1,3 +1,5 @@
+@import(https://i.icomoon.io/public/temp/71fcc468e7/UntitledProject/style.css);
+
 /* Universal box-sizing for consistent element sizing */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -252,24 +254,20 @@ body, html {
 
 
 .holberton_school-icon-ic_sound:before {
-  content: "\e90e";
-  font-size: 5.8875rem; /* Adjust the size as needed */
+  font-size: 5.8875rem;
   color: #FF6565;
 }
 .holberton_school-icon-ic_video:before {
-  content: "\e910";
   font-size: 5.8875rem;
   color: #FF6565;
 
 }
 .holberton_school-icon-ic_music:before {
-  content: "\e90d";
   font-size: 5.8875rem;
   color: #FF6565;
 
 }
 .holberton_school-icon-ic_hearing:before {
-  content: "\e909";
   font-size: 5.8875rem;
   color: #FF6565;
 }
